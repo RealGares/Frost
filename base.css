@@ -121,3 +121,18 @@
     backdrop-filter: blur(var(--glass-blur));
     border-radius: calc(var(--border-radius) / 2);
 }
+
+/* ====================== SERVER LIST ====================== */
+
+.wrapper-3NnKdC {
+    background-color: rgba(var(--background-solid-darker), 0.6);
+}
+
+/* Custom Home Button */
+.homeIcon-FuNwkv {
+    background-color: transparent;
+    background-image: var(--home-icon);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
