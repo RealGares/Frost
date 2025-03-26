@@ -37,7 +37,7 @@
     --header-secondary: rgba(255, 255, 255, 0.6);
 }
 
-/* Main background - App mount */
+/* Main Background - App Mount */
 #app-mount {
     background: var(--background-image) center/cover no-repeat;
 }
@@ -53,4 +53,71 @@
     backdrop-filter: blur(var(--background-blur));
     pointer-events: none;
     z-index: -1;
+}
+
+/* Selection Color */
+::selection {
+    background-color: rgba(var(--accent), 0.5);
+    color: #fff;
+}
+
+/* Apply custom scrollbars */
+::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--accent-alt), 0.6) !important;
+    border-radius: 8px !important;
+    border: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--accent), 0.8) !important;
+}
+
+/* ====================== FROSTED GLASS EFFECTS ====================== */
+/* Apply frosted glass effect to key UI components */
+
+/* Frosted Glass Mixin - applied to multiple elements */
+.chat-3bRxxu,
+.container-1D34oG,
+.container-3w7J-x,
+.members-1998pB,
+.sidebar-2K8pFh,
+.panels-j1Uci_,
+.container-3baos1,
+.container-1giJp5,
+.applicationStore-1pNvnv,
+.pageWrapper-1PgVDX,
+.scroller-2LSbBU,
+.standardSidebarView-3F1I7i {
+    background-color: rgba(var(--background-solid), calc(0.4 * var(--glass-opacity))) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Modal Windows */
+.root-1gCeng,
+.modal-yWgWj-,
+.modalRoot-1Kx4Hb {
+    background-color: rgba(var(--background-solid), 0.85) !important;
+    backdrop-filter: blur(calc(var(--glass-blur) * 1.5)) saturate(var(--glass-saturation));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+}
+
+/* Tooltips */
+.tooltip-2QfLtc {
+    background-color: rgba(var(--accent), 0.9) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: calc(var(--border-radius) / 2);
 }
