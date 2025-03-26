@@ -136,3 +136,64 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+/* Server Icons */
+.listItem-2P_4kh .wrapper-25eVIn {
+    transition: transform var(--transition-speed) ease, border-radius var(--transition-speed) ease;
+}
+
+.listItem-2P_4kh:hover .wrapper-25eVIn {
+    transform: translateY(-2px) scale(1.05);
+    border-radius: calc(var(--border-radius) * 1.5) !important;
+}
+
+/* Server Folder */
+.folder-1hbNCn {
+    background-color: rgba(var(--background-solid-dark), 0.5);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.folder-1hbNCn:hover {
+    background-color: rgba(var(--accent-alt), 0.5);
+}
+
+/* Server active indicator pill */
+.pill-31IEus .item-2hkk8m {
+    background-color: rgb(var(--accent));
+    height: 34px !important;
+    transition: height 0.2s ease;
+}
+
+/* ====================== CHANNEL LIST ====================== */
+
+/* Channel Hover Effects */
+.mainContent-u_9PKf {
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    border-radius: var(--border-radius);
+    padding: 0 8px;
+}
+
+.mainContent-u_9PKf:hover {
+    background-color: rgba(var(--background-solid-dark), 0.6);
+    color: var(--interactive-hover);
+}
+
+/* Selected Channel */
+.modeSelected-346R90 .mainContent-u_9PKf {
+    background-color: rgba(var(--accent), 0.2);
+}
+
+.modeSelected-346R90 .icon-1DeIlz,
+.modeSelected-346R90 .name-23GUGE {
+    color: rgb(var(--accent));
+    font-weight: 600;
+}
+
+/* Channel Categories */
+.containerDefault--pIXnN .overflow-WK9Ogt {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: rgba(var(--accent), 0.8);
+}
