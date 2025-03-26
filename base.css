@@ -1,0 +1,56 @@
+/* Frost Theme - Base Styles
+ * A modern, sleek Discord theme with smooth animations and frosted glass effects
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ====================== CORE ELEMENTS ====================== */
+
+/* Apply custom font if user has enabled it */
+:root {
+    --font-primary: 'Poppins', 'Whitney', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    --font-display: 'Poppins', 'Whitney', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Global Discord Variables Override */
+.theme-dark,
+.theme-light {
+    --background-primary: rgba(var(--background-solid), 0.7);
+    --background-secondary: rgba(var(--background-solid-dark), 0.7);
+    --background-secondary-alt: rgba(var(--background-solid-dark), 0.8);
+    --background-tertiary: rgba(var(--background-solid-darker), 0.8);
+    --background-floating: rgba(var(--background-solid-darker), 0.9);
+    --background-accent: rgba(var(--accent), 0.15);
+    --background-message-hover: rgba(var(--background-solid-darker), 0.4);
+
+    --text-normal: rgba(255, 255, 255, 0.9);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --text-link: rgb(var(--accent));
+
+    --channels-default: rgba(255, 255, 255, 0.5);
+    --interactive-normal: rgba(255, 255, 255, 0.7);
+    --interactive-hover: rgba(255, 255, 255, 0.9);
+    --interactive-active: rgba(255, 255, 255, 1);
+    --interactive-muted: rgba(255, 255, 255, 0.3);
+
+    --header-primary: rgba(255, 255, 255, 1);
+    --header-secondary: rgba(255, 255, 255, 0.6);
+}
+
+/* Main background - App mount */
+#app-mount {
+    background: var(--background-image) center/cover no-repeat;
+}
+
+#app-mount::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--background-solid-darker), var(--background-darkness));
+    backdrop-filter: blur(var(--background-blur));
+    pointer-events: none;
+    z-index: -1;
+}
