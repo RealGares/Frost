@@ -1,0 +1,562 @@
+/* Frost Theme - Base Styles
+ * A modern, sleek Discord theme with smooth animations and frosted glass effects
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ====================== CORE ELEMENTS ====================== */
+
+/* Apply custom font if user has enabled it */
+:root {
+    --font-primary: 'Poppins', 'Whitney', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    --font-display: 'Poppins', 'Whitney', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Global Discord Variables Override */
+.theme-dark,
+.theme-light {
+    --background-primary: rgba(var(--background-solid), 0.7);
+    --background-secondary: rgba(var(--background-solid-dark), 0.7);
+    --background-secondary-alt: rgba(var(--background-solid-dark), 0.8);
+    --background-tertiary: rgba(var(--background-solid-darker), 0.8);
+    --background-floating: rgba(var(--background-solid-darker), 0.9);
+    --background-accent: rgba(var(--accent), 0.15);
+    --background-message-hover: rgba(var(--background-solid-darker), 0.4);
+
+    --text-normal: rgba(255, 255, 255, 0.9);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --text-link: rgb(var(--accent));
+
+    --channels-default: rgba(255, 255, 255, 0.5);
+    --interactive-normal: rgba(255, 255, 255, 0.7);
+    --interactive-hover: rgba(255, 255, 255, 0.9);
+    --interactive-active: rgba(255, 255, 255, 1);
+    --interactive-muted: rgba(255, 255, 255, 0.3);
+
+    --header-primary: rgba(255, 255, 255, 1);
+    --header-secondary: rgba(255, 255, 255, 0.6);
+}
+
+/* Main Background - App Mount */
+#app-mount {
+    background: var(--background-image) center/cover no-repeat;
+}
+
+#app-mount::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--background-solid-darker), var(--background-darkness));
+    backdrop-filter: blur(var(--background-blur));
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Selection Color */
+::selection {
+    background-color: rgba(var(--accent), 0.5);
+    color: #fff;
+}
+
+/* Apply custom scrollbars */
+::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--accent-alt), 0.6) !important;
+    border-radius: 8px !important;
+    border: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--accent), 0.8) !important;
+}
+
+/* ====================== FROSTED GLASS EFFECTS ====================== */
+/* Apply frosted glass effect to key UI components */
+
+/* Frosted Glass Mixin - applied to multiple elements */
+.chat-3bRxxu,
+.container-1D34oG,
+.container-3w7J-x,
+.members-1998pB,
+.sidebar-2K8pFh,
+.panels-j1Uci_,
+.container-3baos1,
+.container-1giJp5,
+.applicationStore-1pNvnv,
+.pageWrapper-1PgVDX,
+.scroller-2LSbBU,
+.standardSidebarView-3F1I7i {
+    background-color: rgba(var(--background-solid), calc(0.4 * var(--glass-opacity))) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Modal Windows */
+.root-1gCeng,
+.modal-yWgWj-,
+.modalRoot-1Kx4Hb {
+    background-color: rgba(var(--background-solid), 0.85) !important;
+    backdrop-filter: blur(calc(var(--glass-blur) * 1.5)) saturate(var(--glass-saturation));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+}
+
+/* Tooltips */
+.tooltip-2QfLtc {
+    background-color: rgba(var(--accent), 0.9) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: calc(var(--border-radius) / 2);
+}
+
+/* ====================== SERVER LIST ====================== */
+
+.wrapper-3NnKdC {
+    background-color: rgba(var(--background-solid-darker), 0.6);
+}
+
+/* Custom Home Button */
+.homeIcon-FuNwkv {
+    background-color: transparent;
+    background-image: var(--home-icon);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Server Icons */
+.listItem-2P_4kh .wrapper-25eVIn {
+    transition: transform var(--transition-speed) ease, border-radius var(--transition-speed) ease;
+}
+
+.listItem-2P_4kh:hover .wrapper-25eVIn {
+    transform: translateY(-2px) scale(1.05);
+    border-radius: calc(var(--border-radius) * 1.5) !important;
+}
+
+/* Server Folder */
+.folder-1hbNCn {
+    background-color: rgba(var(--background-solid-dark), 0.5);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.folder-1hbNCn:hover {
+    background-color: rgba(var(--accent-alt), 0.5);
+}
+
+/* Server active indicator pill */
+.pill-31IEus .item-2hkk8m {
+    background-color: rgb(var(--accent));
+    height: 34px !important;
+    transition: height 0.2s ease;
+}
+
+/* ====================== CHANNEL LIST ====================== */
+
+/* Channel Hover Effects */
+.mainContent-u_9PKf {
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    border-radius: var(--border-radius);
+    padding: 0 8px;
+}
+
+.mainContent-u_9PKf:hover {
+    background-color: rgba(var(--background-solid-dark), 0.6);
+    color: var(--interactive-hover);
+}
+
+/* Selected Channel */
+.modeSelected-346R90 .mainContent-u_9PKf {
+    background-color: rgba(var(--accent), 0.2);
+}
+
+.modeSelected-346R90 .icon-1DeIlz,
+.modeSelected-346R90 .name-23GUGE {
+    color: rgb(var(--accent));
+    font-weight: 600;
+}
+
+/* Channel Categories */
+.containerDefault--pIXnN .overflow-WK9Ogt {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: rgba(var(--accent), 0.8);
+}
+
+/* ====================== MESSAGES ====================== */
+
+/* Message Container */
+.message-2qnXI6 {
+    transition: background-color var(--transition-speed) ease;
+    border-radius: var(--border-radius);
+    margin: 0 16px 0 8px;
+    padding: 8px 16px;
+}
+
+.message-2qnXI6:hover {
+    background-color: rgba(var(--background-solid-dark), 0.5);
+}
+
+/* Embeds */
+.embedWrapper-lXpS3L {
+    border-radius: var(--border-radius);
+    border-left: 4px solid rgb(var(--accent));
+    background-color: rgba(var(--background-solid-dark), 0.4);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.embedWrapper-lXpS3L:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Code Blocks */
+.markup-2BOw-j code {
+    background-color: rgba(var(--background-solid-darker), 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+}
+
+.codeBlockText-9TnoxQ {
+    padding: 8px 12px;
+}
+
+/* Typing Indicator */
+.typing-2GQL18 {
+    background-color: transparent;
+    bottom: 100%;
+    padding-left: 12px;
+}
+
+@keyframes typingDotPulse {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.typing-2GQL18 .dotPulse-1vHgxS {
+    animation: typingDotPulse 1.5s infinite;
+}
+
+.typing-2GQL18 .dot-3X9d8G:nth-child(1) { animation-delay: 0s; }
+.typing-2GQL18 .dot-3X9d8G:nth-child(2) { animation-delay: 0.2s; }
+.typing-2GQL18 .dot-3X9d8G:nth-child(3) { animation-delay: 0.4s; }
+
+/* ====================== MEMBER LIST ====================== */
+
+.member-3-YXUe {
+    border-radius: var(--border-radius);
+    margin: 0 8px;
+    padding: 0 8px;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.member-3-YXUe:hover {
+    background-color: rgba(var(--background-solid-dark), 0.5);
+    transform: translateX(2px);
+}
+
+.roleColor-rz2vM0 {
+    transition: color var(--transition-speed) ease;
+}
+
+/* ====================== STATUS INDICATORS ====================== */
+
+/* Status Indicators with Animations */
+.status-1fhblQ {
+    border: 2px solid rgba(var(--background-solid-darker), 0.6);
+    transition: border-color var(--transition-speed) ease;
+}
+
+.status-1fhblQ.online-2S838R { background-color: rgb(var(--success)); }
+.status-1fhblQ.idle-3DEnRT { background-color: rgb(var(--warning)); }
+.status-1fhblQ.dnd-1_xrcq { background-color: rgb(var(--danger)); }
+.status-1fhblQ.offline-3qoTek { background-color: #747f8d; }
+
+.member-3-YXUe:hover .status-1fhblQ {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ====================== BUTTONS & INTERACTIVE ELEMENTS ====================== */
+
+/* Buttons */
+.button-38aScr {
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.lookFilled-1Gx00P.colorBrand-3pXr91 {
+    background-color: rgb(var(--accent));
+}
+
+.lookFilled-1Gx00P.colorBrand-3pXr91:hover {
+    background-color: rgb(var(--accent-alt));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Sliders */
+.slider-1PF9SW .bar-2Qqk5Z {
+    background-color: rgba(var(--accent-alt), 0.3);
+}
+
+.slider-1PF9SW .barFill-23-gu- {
+    background-color: rgb(var(--accent));
+}
+
+.grabber-3mFHz2 {
+    background-color: #fff;
+    border: 3px solid rgb(var(-accent));
+    box-shadow: 0 0 8px rgba(var(--accent), 0.5);
+    transition: transform var(--transition-speed) ease;
+}
+
+.grabber-3mFHz2:hover {
+    transform: scale(1.2);
+}
+
+/* Checkbox */
+.checkbox-1ix_J3 {
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.checkbox-1ix_J3.checked-3_4uQ9 {
+    background-color: rgb(var(--accent)) !important;
+    border-color: rgb(var(--accent)) !important;
+}
+
+.checkbox-1ix_J3.checked-3_4uQ9 svg {
+    animation: checkboxAnimate 0.3s ease;
+}
+
+@keyframes checkboxAnimate {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* ====================== ANIMATIONS ====================== */
+
+/* Notification Dot Pulse */
+@keyframes notificationPulse {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(0.8); }
+}
+
+.numberBadge-2s8kKX {
+    animation: notificationPulse 2s infinite ease;
+}
+
+/* Mention Bounce */
+@keyframes mentionBounce {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.mentioned-xhSam7 {
+    animation: mentionBounce 0.5s ease;
+}
+
+/* Button Hover Effect */
+.lookFilled-1Gx00P:not(:disabled):hover,
+.lookOutlined-3sRXeN:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+/* ====================== SETTINGS ====================== */
+
+/* Settings Sidebar */
+.sidebarRegionScroller-3MXcoP {
+    background-color: rgba(var(--background-solid-dark), 0.5);
+}
+
+.side-8zPYf6 .item-PXvHYJ {
+    border-radius: var(--border-radius);
+    margin: 0 8px;
+    padding: 8px 12px;
+    transition: all var(--transition-speed) ease;
+}
+
+.side-8zPYf6 .item-PXvHYJ:hover {
+    background-color: rgba(var(--background-solid), 0.3);
+    transform: translateX(2px);
+}
+
+.side-8zPYf6 .selected-3s45Ha {
+    background-color: rgba(var(--accent), 0.2) !important;
+    color: rgb(var(--accent));
+    font-weight: 600;
+}
+
+/* Settings Content */
+.contentRegionScroller-26nc1e {
+    background-color: transparent;
+}
+
+/* ====================== REDUCED MOTION SUPPORT ====================== */
+@media (prefers-reduced-motion) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001s !important;
+        scroll-behavior: auto !important;
+    }
+
+    .numberBadge-2s8kKX,
+    .mentioned-xhSam7,
+    .typing-2GQL18 .dot-3X9d8G {
+        animation: none !important;
+    }
+
+    .lookFilled-1Gx00P:not(:disabled):hover,
+    .lookOutlined-3sRXeN:not(:disabled):hover,
+    .member-3-YXUe:hover,
+    .grabber-3mFHz2:hover,
+    .listItem-2P_4khL:hover .wrapper-25eVIn,
+    .embedWrapper-lXpS3L:hover {
+        transform: none !important;
+    }
+}
+
+/* ====================== CUSTOM ANIMATIONS ====================== */
+
+/* Message Send Animation */
+.message-2qnXI6[data-is-author="true"] {
+    animation: messageSend 0.3s ease;
+}
+
+@keyframes messageSend {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth Reveal Animation for Different UI Elements */
+.container-1D34oG,
+.container-3w7J-x,
+.membersWrap-2h-GB4,
+.nowPlayingColumn-2sl4cE,
+.pageWrapper-1PgVDX {
+    animation: smoothReveal 0.5s ease;
+}
+
+@keyframes smoothReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Avatar Hover Effect */
+.avatar-1BDn8e {
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.avatar-1BDn8e:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Emoji Picker Animations */
+.emojiItemSelected-1aLkfV {
+    animation: emojiSelect 0.3s ease;
+}
+
+@keyframes emojiSelect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* ====================== USER POPOUTS ====================== */
+
+.userPopout-xaxa6l {
+    background-color: rgba(var(--background-solid-dark), 0.9);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: popoutAnimation 0.3s ease;
+}
+
+@keyframes popoutAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.headerNormal-3KXFHr {
+    background-color: rgba(var(--accent), 0.2);
+}
+
+/* ====================== MOBILE RESPONSIVENESS ====================== */
+
+@media (max-width: 1100px) {
+    :root {
+        --glass-blur: 8px;
+    }
+
+    .contentRegion-3nDuYy {
+        max-width: calc(100vw - var(--sidebar-width));
+    }
+}
+
+/* ====================== COMPATIBILITY FOR PLUGINS ====================== */
+
+/* Better Discord Plugin Support */
+#bd-settingspane-container .ui-switch-item .ui-switch-wrapper {
+    background-color: rgba(var(--background-solid-dark), 0.3);
+}
+
+#bd-settingspane-container .ui-switch-item .ui-switch-wrapper .ui-switch.checked {
+    background-color: rgb(var(--accent));
+}
+
+.bd-addon-card {
+    background-color: rgba(var(--background-solid), 0.3);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.bd-addon-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(var(--background-solid), 0.5);
+}
